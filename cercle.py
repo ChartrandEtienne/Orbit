@@ -1,4 +1,13 @@
+import OpenGL
+
+from OpenGL.GL import *
+from OpenGL.GLUT import *
+from OpenGL.GLU import *
+
+from numpy import *
+
 from pom import pom
+
 # tracer les planetes
 class cercle(pom):
 	def __init__(self, parPosition, parVelocite, parMasse=1, parRayon=1, parSmoothness = 10):

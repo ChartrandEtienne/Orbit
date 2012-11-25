@@ -1,6 +1,14 @@
 from numpy import *
 from vector import vector
 
+import OpenGL
+
+from OpenGL.GL import *
+from OpenGL.GLUT import *
+from OpenGL.GLU import *
+
+from numpy import *
+
 # a: acceleration (m/s**2)
 # M: masse de la planete (kg)
 # r: rayon depuis le centre de la planete (m)
