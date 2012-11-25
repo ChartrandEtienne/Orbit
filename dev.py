@@ -23,11 +23,9 @@ class matrice:
 
 def tick(foo):
 	# Tri.sim(centre, 0.032)
-	
+	Test.sim(centre, 0.032)	
 	glutPostRedisplay()
 	glutTimerFunc(50, tick, 0)
-	for i in range(0, len(systemeSolaire)):
-		systemeSolaire[i].sim(centre, 0.032)
 
 def display():
 	glMatrixMode(GL_MODELVIEW)
@@ -35,8 +33,7 @@ def display():
 	glClear(GL_COLOR_BUFFER_BIT)
 	glColor3f(1, 0, 0)
 	glLoadIdentity()
-	for i in range(0, len(systemeSolaire)):
-		systemeSolaire[i].render()
+	Test.render()
 	centre.render()
 	glFlush()	
 
@@ -44,18 +41,16 @@ def init():
 	glClearColor(0, 0, 0, 0)
 	glLoadIdentity()
 	
-Terre = pom(vector(0, 6371 * 1000), vector(0, 0), 5.9736 * (10 ** 24))
-gNul = pom(vector(1, 0), vector(0, 0))
 centre = cercle(vector(0, 0), vector(0, 0), 10 ** 2)
 centre.rayon = 10
 centre.smoothness = 20
 systemeSolaire = []
-systemeSolaire.append(cercle(vector(-20, 5), vector(0, 15)))
+Test = cercle(vector(-20, 0), vector(0, 20))
 #print len(systemeSolaire)
-systemeSolaire.append(cercle(vector(10, 0), vector(0, 25)))
+# systemeSolaire.append(cercle(vector(10, 0), vector(0, 25)))
 #print len(systemeSolaire)
 # weird shit
-systemeSolaire.append(cercle(vector(15, 10), vector(5, 15)))
+# systemeSolaire.append(cercle(vector(15, 10), vector(5, 15)))
 #print len(systemeSolaire)
 
 def main():
