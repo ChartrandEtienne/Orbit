@@ -43,13 +43,30 @@ class pom:
 			a = 10
 		# composante x
 		ax = a * xsurr
-		newp = self.p.x + ((self.v.x * tick) - (ax * tick ** 2) / 2)
-		newv = self.v.x - ax * tick
-		self.p.x = newp
-		self.v.x = newv
+		newpx = self.p.x + ((self.v.x * tick) - (ax * tick ** 2) / 2)
+		# newv = self.v.x - ax * tick
+		# self.p.x = newp
+		# self.v.x = newv
 		ay = a * ysurr
 		# composante y
-		newp = self.p.y + ((self.v.y * tick) - (ay * tick ** 2) / 2)
-		newv = self.v.y - ay * tick 
-		self.p.y = newp 
-		self.v.y = newv
+		newpy = self.p.y + ((self.v.y * tick) - (ay * tick ** 2) / 2)
+		# rayon a la position estimee
+		r2 = sqrt(abs((deltax + newpx) ** 2) + (abs((deltay + newpy) ** 2)))
+		# acceleration a la position estimmee
+		a2 = (G * gravite.m) / (r ** 2)
+		# moyenne
+		a = (a + a2) / 2
+		ax = a * xsurr
+		ay = a * ysurr
+		# positions et vitesses selon l'acceleration moyenne
+		newpx = self.p.x + ((self.v.x * tick) - (ax * tick ** 2) / 2)
+		newpy = self.p.y + ((self.v.y * tick) - (ay * tick ** 2) / 2)
+		newvx = self.v.x - ax * tick
+		newvy = self.v.y - ay * tick
+		self.p.x = newpx
+		self.p.y = newpy
+		self.v.x = newvx
+		self.v.y = newvy
+		# newv = self.v.y - ay * tick 
+		# self.p.y = newp 
+		# self.v.y = newv
