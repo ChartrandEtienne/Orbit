@@ -1,8 +1,12 @@
 from pom import pom
 # tracer les planetes
 class cercle(pom):
-        rayon = 1
-        smoothness = 10
+	def __init__(self, parPosition, parVelocite, parMasse=1, parRayon=1, parSmoothness = 10):
+		self.p = parPosition
+		self.v = parVelocite
+		self.m = parMasse
+		self.rayon = parRayon
+		self.smoothness = parSmoothness
         def render(self):
                 glLoadIdentity()
                 glBegin(GL_LINE_LOOP)
