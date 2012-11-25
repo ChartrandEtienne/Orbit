@@ -55,8 +55,7 @@ class pom:
 		# acceleration a la position estimmee
 		a2 = (G * gravite.m) / (r ** 2)
 		# moyenne
-		# a = (a + a2) / 2
-		a = a2
+		a = (a + a2) / 2
 		ax = a * xsurr
 		ay = a * ysurr
 		# positions et vitesses selon l'acceleration moyenne

@@ -23,9 +23,9 @@ class matrice:
 
 def tick(foo):
 	# Tri.sim(centre, 0.032)
-	Test.sim(centre, 0.032)	
+	Test.sim(centre, 0.01)	
 	glutPostRedisplay()
-	glutTimerFunc(50, tick, 0)
+	glutTimerFunc(5, tick, 0)
 
 def display():
 	glMatrixMode(GL_MODELVIEW)
@@ -45,7 +45,7 @@ centre = cercle(vector(0, 0), vector(0, 0), 10 ** 2)
 centre.rayon = 10
 centre.smoothness = 20
 systemeSolaire = []
-Test = cercle(vector(-20, 0), vector(0, 20))
+Test = cercle(vector(-10, 0), vector(0, 20))
 #print len(systemeSolaire)
 # systemeSolaire.append(cercle(vector(10, 0), vector(0, 25)))
 #print len(systemeSolaire)
