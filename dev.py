@@ -31,6 +31,7 @@ def tick(foo):
 	glutPostRedisplay()
 	glutTimerFunc(50, tick, 0)
 
+
 def display():
 	glMatrixMode(GL_MODELVIEW)
 	glEnableClientState(GL_VERTEX_ARRAY)
@@ -63,6 +64,14 @@ systemeSolaire.append(Test)
 # systemeSolaire.append(cercle(vector(15, 10), vector(5, 15)))
 #print len(systemeSolaire)
 
+def keyboard(key, x, y):
+
+	if key == 'q':
+		sys.exit(0)
+	if key == 's':
+		systemeSolaire.append(systemeSolaire[0].shoot(vector(0, 5)))
+
+
 def main():
 	print "This. Is. Orbit."
 	glutInit(sys.argv)
@@ -75,6 +84,7 @@ def main():
 	matrice1.projection(50, 50)
 	glLoadMatrixf(matrice1.m)
 	glutDisplayFunc(display)
+	glutKeyboardFunc(keyboard)
 	glutTimerFunc(25, tick, 0)
 	glutMainLoop()
 	return	

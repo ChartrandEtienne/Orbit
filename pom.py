@@ -30,6 +30,9 @@ class pom:
 		self.p = parPosition
 		self.v = parVelocite
 		self.m = parMasse	
+	def addShooty(self, nouveau):
+		nouveau = pom(self.p, vector(self.v.x + nouveau.x, self.v.y + nouveau.y))
+		return nouveau
 	def sim(self, gravite, tick):
 		global G
 		deltax = -1 * (gravite.p.x - self.p.x)
