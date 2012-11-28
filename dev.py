@@ -12,6 +12,7 @@ from pom import pom
 from vector import vector
 from triangle import triangle
 from cercle import cercle
+from ship import ship
 
 class matrice:
 	def __init__(self):
@@ -23,9 +24,12 @@ class matrice:
 
 def tick(foo):
 	# Tri.sim(centre, 0.032)
-	Test.sim(centre, 0.01)	
+	# Test.sim(centre, 0.032)	
+	# Test.phy.sim(centre.phy, 0.032)
+	for i in range(0, len(systemeSolaire)):
+		systemeSolaire[i].phy.sim(centre.phy, 0.032)	
 	glutPostRedisplay()
-	glutTimerFunc(5, tick, 0)
+	glutTimerFunc(50, tick, 0)
 
 def display():
 	glMatrixMode(GL_MODELVIEW)
@@ -33,20 +37,26 @@ def display():
 	glClear(GL_COLOR_BUFFER_BIT)
 	glColor3f(1, 0, 0)
 	glLoadIdentity()
-	Test.render()
 	centre.render()
+	for i in range(0, len(systemeSolaire)):
+		systemeSolaire[i].render()
+	# Test.render()
+	# centre.render()
 	glFlush()	
 
 def init():
 	glClearColor(0, 0, 0, 0)
 	glLoadIdentity()
 	
-centre = cercle(vector(0, 0), vector(0, 0), 10 ** 2)
-centre.rayon = 10
-centre.smoothness = 20
+# centre = cercle(vector(0, 0), vector(0, 0), 10 ** 2)
+centre = ship(pom(vector(0, 0), vector(0, 0), 10 ** 2), cercle(10, 20))
+Test = ship(pom(vector(-20, 0), vector(0, 20)), cercle())
+# centre.rayon = 10
+# centre.smoothness = 20
 systemeSolaire = []
-Test = cercle(vector(-10, 0), vector(0, 20))
+# Test = cercle(vector(-20, 0), vector(0, 20))
 #print len(systemeSolaire)
+systemeSolaire.append(Test)
 # systemeSolaire.append(cercle(vector(10, 0), vector(0, 25)))
 #print len(systemeSolaire)
 # weird shit
@@ -62,7 +72,7 @@ def main():
 	init()
 	glMatrixMode(GL_PROJECTION)
 	matrice1 = matrice()
-	matrice1.projection(100, 100)
+	matrice1.projection(50, 50)
 	glLoadMatrixf(matrice1.m)
 	glutDisplayFunc(display)
 	glutTimerFunc(25, tick, 0)

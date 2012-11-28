@@ -55,14 +55,17 @@ class pom:
 		# acceleration a la position estimmee
 		a2 = (G * gravite.m) / (r ** 2)
 		# moyenne
-		a = (a + a2) / 2
+		# a = (a + a2) / 2
+		a = a2
 		ax = a * xsurr
 		ay = a * ysurr
 		# positions et vitesses selon l'acceleration moyenne
-		newpx = self.p.x + ((self.v.x * tick) - (ax * tick ** 2) / 2)
-		newpy = self.p.y + ((self.v.y * tick) - (ay * tick ** 2) / 2)
-		newvx = self.v.x - ax * tick
-		newvy = self.v.y - ay * tick
+		newvx = self.v.x - (ax * tick) / 2
+		newvy = self.v.y - (ay * tick) / 2
+		newpx = self.p.x + ((newvx * tick) - (ax * tick ** 2) / 2)
+		newpy = self.p.y + ((newvy * tick) - (ay * tick ** 2) / 2)
+		newvx = newvx - (ax * tick) / 2
+		newvy = newvy - (ay * tick) / 2
 		self.p.x = newpx
 		self.p.y = newpy
 		self.v.x = newvx
