@@ -1,5 +1,4 @@
 from numpy import *
-from vector import vector
 
 import OpenGL
 
@@ -26,17 +25,19 @@ G = 6.6726 * 10 ** 1
 # 
 # sim: prends un autre point de masse et calcule la position de self apres le temps tick selon l'attraction de pom. Possiblement d'un tableau de pom si j'en ai le courage
 class pom:
-	def __init__(self, parPosition, parVelocite, parMasse = 1):
-		self.p = parPosition
-		self.v = parVelocite
-		self.m = parMasse	
-	def addShooty(self, nouveau):
-		nouveau = pom(self.p, vector(self.v.x + nouveau.x, self.v.y + nouveau.y))
+	def __init__(self, parPx, parPy, parVx, parVy, parMasse = 1):
+		self.px = parPx
+		self.py = psrPy
+		self.vx = parVx
+		self.vy = parVy
+		self.m = parMasse
+	def addShooty(self, nouveaux, nouveauy):
+		nouveau = pom(self.px, self.py, self.vx + nouveaux, self.vy + nouveauy) 
 		return nouveau
 	def sim(self, gravite, tick):
 		global G
-		deltax = -1 * (gravite.p.x - self.p.x)
-		deltay = -1 * (gravite.p.y - self.p.y)
+		deltax = -1 * (gravite.px - self.px)
+		deltay = -1 * (gravite.py - self.py)
 		r = sqrt(abs(deltax ** 2) + abs(deltay ** 2)) 
 		xsurr = deltax / r
 		ysurr = deltay / r
@@ -46,13 +47,13 @@ class pom:
 			a = 10
 		# composante x
 		ax = a * xsurr
-		newpx = self.p.x + ((self.v.x * tick) - (ax * tick ** 2) / 2)
-		# newv = self.v.x - ax * tick
-		# self.p.x = newp
-		# self.v.x = newv
+		newpx = self.px + ((self.vx * tick) - (ax * tick ** 2) / 2)
+		# newv = self.vx - ax * tick
+		# self.px = newp
+		# self.vx = newv
 		ay = a * ysurr
 		# composante y
-		newpy = self.p.y + ((self.v.y * tick) - (ay * tick ** 2) / 2)
+		newpy = self.py + ((self.vy * tick) - (ay * tick ** 2) / 2)
 		# rayon a la position estimee
 		r2 = sqrt(abs((deltax + newpx) ** 2) + (abs((deltay + newpy) ** 2)))
 		# acceleration a la position estimmee
@@ -63,16 +64,16 @@ class pom:
 		ax = a * xsurr
 		ay = a * ysurr
 		# positions et vitesses selon l'acceleration moyenne
-		newvx = self.v.x - (ax * tick) / 2
-		newvy = self.v.y - (ay * tick) / 2
-		newpx = self.p.x + ((newvx * tick) - (ax * tick ** 2) / 2)
-		newpy = self.p.y + ((newvy * tick) - (ay * tick ** 2) / 2)
+		newvx = self.vx - (ax * tick) / 2
+		newvy = self.vy - (ay * tick) / 2
+		newpx = self.px + ((newvx * tick) - (ax * tick ** 2) / 2)
+		newpy = self.py + ((newvy * tick) - (ay * tick ** 2) / 2)
 		newvx = newvx - (ax * tick) / 2
 		newvy = newvy - (ay * tick) / 2
-		self.p.x = newpx
-		self.p.y = newpy
-		self.v.x = newvx
-		self.v.y = newvy
-		# newv = self.v.y - ay * tick 
-		# self.p.y = newp 
-		# self.v.y = newv
+		self.px = newpx
+		self.py = newpy
+		self.vx = newvx
+		self.vy = newvy
+		# newv = self.vy - ay * tick 
+		# self.py = newp 
+		# self.vy = newv

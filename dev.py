@@ -9,7 +9,6 @@ from OpenGL.GLU import *
 from numpy import *
 
 from pom import pom
-from vector import vector
 from triangle import triangle
 from cercle import cercle
 from ship import ship

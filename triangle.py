@@ -8,10 +8,10 @@ class triangle(pom):
 		# print 'self.p.x, ',', self.p.y, ', ', self.v.x, ', ', self.v.y'
 		# print self.p.x, ',', self.p.y, ', ', self.v.x, ', ', self.v.y
 		glLoadIdentity()
-		glTranslate(position.x, position.y, 0)
+		glTranslate(position.px, position.py, 0)
 		r = self.rayon
 		glBegin(GL_LINE_LOOP)
-		glVertex2f(self.p.x, self.p.y + r)
-		glVertex2f(self.p.x - r, self.p.y - r)
-		glVertex2f(self.p.x + r, self.p.y - r)
+		glVertex2f(0, 0 + r)
+		glVertex2f(0 - r, 0 - r)
+		glVertex2f(0 + r, 0 - r)
 		glEnd() 

@@ -18,5 +18,5 @@ class cercle:
                 glBegin(GL_LINE_LOOP)
                 for i in range(0, self.smoothness):
                         angle = i * math.pi * 2.0 / self.smoothness
-                        glVertex2f(position.x + self.rayon * math.cos(angle), position.y + self.rayon * math.sin(angle))
+                        glVertex2f(position.px + self.rayon * math.cos(angle), position.py + self.rayon * math.sin(angle))
                 glEnd()
