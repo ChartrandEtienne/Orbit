@@ -5,6 +5,8 @@ class ship:
 	def __init__(self, parPom, parGra):
 		self.pom = parPom
 		self.gra = parGra
+#	def commande(nouveauPom):
+#		self.pom.
 	def render(self):
 		self.gra.render(self.pom)
 	def shoot(self, veloc):
