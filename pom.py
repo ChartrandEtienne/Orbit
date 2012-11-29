@@ -27,7 +27,7 @@ G = 6.6726 * 10 ** 1
 class pom:
 	def __init__(self, parPx, parPy, parVx, parVy, parMasse = 1):
 		self.px = parPx
-		self.py = psrPy
+		self.py = parPy
 		self.vx = parVx
 		self.vy = parVy
 		self.m = parMasse

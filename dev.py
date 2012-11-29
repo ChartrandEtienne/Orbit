@@ -26,7 +26,7 @@ def tick(foo):
 	# Test.sim(centre, 0.032)	
 	# Test.phy.sim(centre.phy, 0.032)
 	for i in range(0, len(systemeSolaire)):
-		systemeSolaire[i].phy.sim(centre.phy, 0.032)	
+		systemeSolaire[i].pom.sim(centre.pom, 0.032)	
 	glutPostRedisplay()
 	glutTimerFunc(50, tick, 0)
 
@@ -49,8 +49,10 @@ def init():
 	glLoadIdentity()
 	
 # centre = cercle(vector(0, 0), vector(0, 0), 10 ** 2)
-centre = ship(pom(vector(0, 0), vector(0, 0), 10 ** 2), cercle(10, 20))
-Test = ship(pom(vector(-20, 0), vector(0, 20)), cercle())
+# centre = ship(pom(vector(0, 0), vector(0, 0), 10 ** 2), cercle(10, 20))
+centre = ship(pom(0, 0, 0, 0, 10 ** 2), cercle(10,20))
+# Test = ship(pom(vector(-20, 0), vector(0, 20)), cercle())
+Test = ship(pom(-20, 0, 0, 20), cercle())
 # centre.rayon = 10
 # centre.smoothness = 20
 systemeSolaire = []
