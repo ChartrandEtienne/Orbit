@@ -32,8 +32,6 @@ class pom:
 		self.vy = parVy
 		self.m = parMasse
 		self.a = parAngle
-	def getAngleDeg(self):
-		return self.angle * 180 / pi
 	def addShooty(self, nouveaux, nouveauy):
 		nouveau = pom(self.px, self.py, self.vx + nouveaux, self.vy + nouveauy) 
 		return nouveau

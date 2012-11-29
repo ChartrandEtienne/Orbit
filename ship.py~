@@ -3,7 +3,7 @@ from cercle import cercle
 from vector import vector
 from pom import pom
 class ship:
-	def __init__(self, parPom, parGra):
+	def __init__(self, parPom, parGra, parAngle=45):
 		self.pom = parPom
 		self.gra = parGra
 	def render(self):
