@@ -1,4 +1,6 @@
 from pom import pom
+import OpenGL
+from OpenGL.GL import *
 
 
 class triangle(pom):

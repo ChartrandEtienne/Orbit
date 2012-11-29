@@ -33,9 +33,9 @@ class pom:
 		self.m = parMasse
 		self.a = parAngle
 	def getAngleDeg(self):
-		return self.angle * 180 / pi
+		return self.a * 180 / pi
 	def addShooty(self, nouveaux, nouveauy):
-		nouveau = pom(self.px, self.py, self.vx + nouveaux, self.vy + nouveauy) 
+		nouveau = pom(self.px, self.py, self.vx + nouveaux, self.vy + nouveauy, 0) 
 		return nouveau
 	def sim(self, gravite, tick):
 		global G

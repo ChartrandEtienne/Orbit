@@ -1,13 +1,12 @@
 from math import *
 from cercle import cercle
-from vector import vector
 from pom import pom
 class ship:
 	def __init__(self, parPom, parGra):
 		self.pom = parPom
 		self.gra = parGra
 	def render(self):
-		self.gra.render(self.pom, self.a)
+		self.gra.render(self.pom)
 	def shoot(self, veloc):
 		# nouveau = ship(self.pom.addShooty((veloc * sin(self.a)) (veloc * cos(self.a)), cercle()))
 		nouveau = ship(self.pom.addShooty(veloc * sin(self.a), veloc * cos(self.a)), cercle())

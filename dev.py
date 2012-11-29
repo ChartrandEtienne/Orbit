@@ -1,5 +1,4 @@
 #!/usr/bin/python -O
-#f banane
 import sys
 import OpenGL
 
