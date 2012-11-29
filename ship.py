@@ -9,6 +9,7 @@ class ship:
 		self.gra.render(self.pom)
 	def shoot(self, veloc):
 		# nouveau = ship(self.pom.addShooty((veloc * sin(self.a)) (veloc * cos(self.a)), cercle()))
-		nouveau = ship(self.pom.addShooty(veloc * sin(self.a), veloc * cos(self.a)), cercle())
+		# nouveau = ship(self.pom.addShooty(veloc * sin(self.a), veloc * cos(self.a)), cercle())
+		nouveau = ship(self.pom.addShooty(sin(self.pom.a), veloc * cos(self.pom.a)), cercle())
 		# Test = ship(pom(vector(-20, 0), vector(0, 20)), cercle())
 		return nouveau
