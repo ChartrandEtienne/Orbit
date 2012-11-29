@@ -70,7 +70,7 @@ def keyboard(key, x, y):
 	if key == 'q':
 		sys.exit(0)
 	if key == 's':
-		systemeSolaire.append(systemeSolaire[0].shoot(vector(0, 5)))
+		systemeSolaire.append(systemeSolaire[0].shoot(5))
 
 
 def main():
