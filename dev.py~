@@ -52,7 +52,7 @@ def init():
 # centre = ship(pom(vector(0, 0), vector(0, 0), 10 ** 2), cercle(10, 20))
 centre = ship(pom(0, 0, 0, 0, 10 ** 2), cercle(10,20))
 # Test = ship(pom(vector(-20, 0), vector(0, 20)), cercle())
-Test = ship(pom(-20, 0, 0, 20), cercle())
+Test = ship(pom(-20, 0, 0, 20), triangle())
 # centre.rayon = 10
 # centre.smoothness = 20
 systemeSolaire = []
