@@ -37,6 +37,10 @@ class pom:
 	def addShooty(self, nouveaux, nouveauy):
 		nouveau = pom(self.px, self.py, self.vx + nouveaux, self.vy + nouveauy, 0, self.a) 
 		return nouveau
+	def distance(self, autre):
+		deltax = -1 * (autre.px - self.px)
+		deltay = -1 * (autre.py - self.py)
+		return sqrt(abs(deltax ** 2) + (deltay ** 2))
 	def sim(self, gravite, tick):
 		global G
 		deltax = -1 * (gravite.px - self.px)

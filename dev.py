@@ -22,11 +22,11 @@ class matrice:
 
 
 def tick(foo):
-	# Tri.sim(centre, 0.032)
-	# Test.sim(centre, 0.032)	
-	# Test.phy.sim(centre.phy, 0.032)
-	for i in range(0, len(systemeSolaire)):
-		systemeSolaire[i].pom.sim(centre.pom, 0.032)	
+	# for i in range(0, len(systemeSolaire)):
+	#	systemeSolaire[i].pom.sim(centre.pom, 0.032)	
+	for i in xrange(len(systemeSolaire) -1, -1, -1):
+		if(systemeSolaire[i].sim(centre.pom, 0.032)):
+			del systemeSolaire[i]
 	glutPostRedisplay()
 	glutTimerFunc(50, tick, 0)
 
