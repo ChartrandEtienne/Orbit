@@ -9,7 +9,7 @@ class ship:
 #	def commande(nouveauPom):
 #		self.pom.
 	def collision(self, other):
-		if self.pom.distance(other.pom) < 5:
+		if self.pom.distance(other.pom) < (self.rayon + other.rayon):
 			# nombre arbitraire: un missile devient actif des qu'il a 4 secondes
 			# sinon, on a une collision avec le tireur
 			# ce qui est emmerdant pour plusieurs raisons
