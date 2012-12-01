@@ -39,7 +39,9 @@ def tick(foo):
 				collisions.append(j)
 		j += 1
 	collisions.sort()
-	print collisions
+	# print collisions
+	for i in xrange(len(collisions) - 1, -1, -1):
+		del systemeSolaire[collisions[i]]
 	glutPostRedisplay()
 	glutTimerFunc(50, tick, 0)
 
