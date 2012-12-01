@@ -27,6 +27,16 @@ def tick(foo):
 	for i in xrange(len(systemeSolaire) -1, -1, -1):
 		if(systemeSolaire[i].sim(centre.pom, 0.032)):
 			del systemeSolaire[i]
+	# boucle dans le tableau, trouve toutes les collisions. 
+	# le tableau est de forme [(a, b), (c, d)] ou chaque paire est une paire d'objets actuellement en collision.
+	i = j = 0 
+	k = len(systemeSolaire)
+	collisions = []
+	while j < k:
+		for i in range(j + 1, k):
+			if systemeSolaire[j].collision(systemeSolaire[i]):
+				collisions.append((i, j))
+		j += 1
 	glutPostRedisplay()
 	glutTimerFunc(50, tick, 0)
 

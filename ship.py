@@ -7,10 +7,10 @@ class ship:
 		self.gra = parGra
 #	def commande(nouveauPom):
 #		self.pom.
+	def collision(self, other):
+		return False	
 	def sim(self, gravite, tick):
 		self.pom.sim(gravite, tick)
-		for i in range(0, len(
-		return False
 	def render(self):
 		self.gra.render(self.pom)
 	def shoot(self, veloc):
