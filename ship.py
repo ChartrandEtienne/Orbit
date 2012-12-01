@@ -6,6 +6,7 @@ class ship:
 		self.pom = parPom
 		self.gra = parGra
 		self.age = 0
+		self.rayon = 0.5
 #	def commande(nouveauPom):
 #		self.pom.
 	def collision(self, other):
