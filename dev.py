@@ -35,8 +35,11 @@ def tick(foo):
 	while j < k:
 		for i in range(j + 1, k):
 			if systemeSolaire[j].collision(systemeSolaire[i]):
-				collisions.append((i, j))
+				collisions.append(i)
+				collisions.append(j)
 		j += 1
+	collisions.sort()
+	print collisions
 	glutPostRedisplay()
 	glutTimerFunc(50, tick, 0)
 
@@ -69,6 +72,7 @@ systemeSolaire = []
 # Test = cercle(vector(-20, 0), vector(0, 20))
 #print len(systemeSolaire)
 systemeSolaire.append(Test)
+
 # systemeSolaire.append(cercle(vector(10, 0), vector(0, 25)))
 #print len(systemeSolaire)
 # weird shit

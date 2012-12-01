@@ -8,7 +8,10 @@ class ship:
 #	def commande(nouveauPom):
 #		self.pom.
 	def collision(self, other):
-		return False	
+		if self.pom.distance(other.pom) < 5:
+			return True
+		else:
+			return False	
 	def sim(self, gravite, tick):
 		self.pom.sim(gravite, tick)
 	def render(self):
