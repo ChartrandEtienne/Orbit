@@ -1,6 +1,7 @@
 from math import *
 from cercle import cercle
 from pom import pom
+from missile import missile
 class ship:
 	def __init__(self, parPom, parGra):
 		self.pom = parPom
@@ -21,11 +22,11 @@ class ship:
 	def sim(self, gravite, tick):
 		self.pom.sim(gravite, tick)
 		self.age += tick 
+		return 0
 	def render(self):
 		self.gra.render(self.pom)
 	def shoot(self, veloc):
-		# nouveau = ship(self.pom.addShooty((veloc * sin(self.a)) (veloc * cos(self.a)), cercle()))
-		# nouveau = ship(self.pom.addShooty(veloc * sin(self.a), veloc * cos(self.a)), cercle())
-		nouveau = ship(self.pom.addShooty(sin(self.pom.a), veloc * cos(self.pom.a)), cercle())
+		# nouveau = ship(self.pom.addShooty(sin(self.pom.a), veloc * cos(self.pom.a)), cercle())
 		# Test = ship(pom(vector(-20, 0), vector(0, 20)), cercle())
+		nouveau = missile(self.pom.addShooty(sin(self.pom.a), veloc * cos(self.pom.a)))	
 		return nouveau

@@ -25,7 +25,7 @@ def tick(foo):
 	# for i in range(0, len(systemeSolaire)):
 	#	systemeSolaire[i].pom.sim(centre.pom, 0.032)	
 	for i in xrange(len(systemeSolaire) -1, -1, -1):
-		if(systemeSolaire[i].sim(centre.pom, 0.032)):
+		if (systemeSolaire[i].sim(centre.pom, 0.032)):
 			del systemeSolaire[i]
 	# boucle dans le tableau, trouve toutes les collisions. 
 	# le tableau est de forme [(a, b), (c, d)] ou chaque paire est une paire d'objets actuellement en collision.

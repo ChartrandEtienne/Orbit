@@ -22,7 +22,7 @@ Le point central du programme est (alors que le monde est toujours simple et ne 
 - Constructeur prenant un pom et une representation graphique, qui renvoie de toute evidence un objet valide selon les principes de cette liste. Habituellement, passe les arguments a la methode sim de son champ pom, qui veut dire point-of-mass. Il est parfois pratique d'utiliser tick pour une minuterie ou quelque chose du genre, mais self.pom.phy fait en general tout le boulot:
 	def __init__(self, pom, gra):
 
-- Methode sim, qui prends un pom qui va faire office de masse qui va exercer une gravitation sur self, et un tick qui est la periode de temps qui sera simulee durant un seul "frame":
+- Methode sim, qui prends un pom qui va faire office de masse qui va exercer une gravitation sur self, et un tick qui est la periode de temps qui sera simulee durant un seul "frame". Accessoirement, sert a comminquer des messages en dehors du tableau: ceux qui revoient True (ou une autre valeur predeterminee) vont etre traites plus tard, et par cela je veut dire pour le moment supprimes du tableau:
 	def sim(self, gravite, tick):
 
 - Methode render, qui ne prends aucun param, et qui prends lui-meme en charge la tache de dessiner la representation graphique de self a l'ecran, selon sa position et son angle(pour le moment). Habituellement, passe le pom a la methode render de son champ gra, qui signifie "graphique", ou "graph" ou ce que vous voulez. 

@@ -8,6 +8,7 @@ from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
 from numpy import *
+from math import *
 
 # a: acceleration (m/s**2)
 # M: masse de la planete (kg)
@@ -34,10 +35,33 @@ class pom:
 		self.m = parMasse
 		self.a = parAngle
 	def getAngleDeg(self):
-		return self.a * 180 / pi
+		return (self.a * 180 / pi) - 90
 	def addShooty(self, nouveaux, nouveauy):
 		nouveau = pom(self.px, self.py, self.vx + nouveaux, self.vy + nouveauy, 0, self.a) 
 		return nouveau
+	def angleVeloc(self):
+		if self.vx == 0:
+			if self.vy > 0:
+				self.a = pi / 2
+				return 
+			if self.vy < 0:
+				self.a = 3 * pi / 2
+				return
+		if self.vy == 0:
+			if self.vx > 0:
+				self.a = 0
+				return 
+			if self.vx < 0:
+				self.a = pi
+				return
+		if self.vx == 0 and self.vy == 0:
+			return	
+		angle = atan(self.vy / self.vx)
+		if self.vx < 0:
+			self.a = angle + pi
+		else:
+			self.a = angle
+		return
 	def distance(self, autre):
 		deltax = -1 * (autre.px - self.px)
 		deltay = -1 * (autre.py - self.py)
