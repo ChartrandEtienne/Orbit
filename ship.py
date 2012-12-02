@@ -8,8 +8,8 @@ class ship:
 		self.gra = parGra
 		self.age = 0
 		self.rayon = 0.5
-#	def commande(nouveauPom):
-#		self.pom.
+	def commande(self, nouveauPom):
+		self.pom.addCommande(nouveauPom)
 	def collision(self, other):
 		if self.pom.distance(other.pom) < (self.rayon + other.rayon):
 			# nombre arbitraire: un missile devient actif des qu'il a 4 secondes
@@ -26,7 +26,5 @@ class ship:
 	def render(self):
 		self.gra.render(self.pom)
 	def shoot(self, veloc):
-		# nouveau = ship(self.pom.addShooty(sin(self.pom.a), veloc * cos(self.pom.a)), cercle())
-		# Test = ship(pom(vector(-20, 0), vector(0, 20)), cercle())
-		nouveau = missile(self.pom.addShooty(sin(self.pom.a), veloc * cos(self.pom.a)))	
+		nouveau = missile(self.pom.addShooty(veloc))
 		return nouveau

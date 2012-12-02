@@ -67,14 +67,25 @@ def init():
 # centre = ship(pom(vector(0, 0), vector(0, 0), 10 ** 2), cercle(10, 20))
 centre = ship(pom(0, 0, 0, 0, 10 ** 2), cercle(10,20))
 # Test = ship(pom(vector(-20, 0), vector(0, 20)), cercle())
-Test = ship(pom(-20, 0, 0, 20), triangle())
+
+# orbite rond
+Test = ship(pom(-30, 0, 0, 14.8), triangle())
+
+Test2 = ship(pom(-20, 0, 0, 18.166), triangle())
+
+# escape velocity
+# Test = ship(pom(-10, 0, 0, 36.33), triangle())
+
+
+
+
 # centre.rayon = 10
 # centre.smoothness = 20
 systemeSolaire = []
 # Test = cercle(vector(-20, 0), vector(0, 20))
 #print len(systemeSolaire)
 systemeSolaire.append(Test)
-
+systemeSolaire.append(Test2)
 # systemeSolaire.append(cercle(vector(10, 0), vector(0, 25)))
 #print len(systemeSolaire)
 # weird shit
@@ -85,8 +96,16 @@ def keyboard(key, x, y):
 
 	if key == 'q':
 		sys.exit(0)
-	if key == 's':
-		systemeSolaire.append(systemeSolaire[0].shoot(5))
+	if key == 'p':
+		# mhhhh... Le append ne devrait pas reellement etre la.
+		systemeSolaire.append(systemeSolaire[0].shoot(10))
+	if key == 'd':
+		systemeSolaire[0].commande(pom(0, 0, 0, 0, 0, 0.1))
+	if key == 'a':
+		systemeSolaire[0].commande(pom(0, 0, 0, 0, 0, -0.1))
+	if key == 'i':
+		print systemeSolaire[2].pom.a
+		
 
 
 def main():

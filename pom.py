@@ -18,6 +18,13 @@ from math import *
 # G = 6.6726 * 10 ** -11 
 G = 6.6726 * 10 ** 1
 
+# NOTE
+# orbite rond pour une velocite v, un rayon R et une masse M:
+# v = sqrt(M * G / r)
+
+# escape velocity:
+# v = sqrt(2 * M * G / r)
+
 # classe Point of Mass: 
 # position en x et y, en metres
 # vitesse vers x et y, en m/s
@@ -34,10 +41,18 @@ class pom:
 		self.vy = parVy
 		self.m = parMasse
 		self.a = parAngle
+	def addCommande(self, commande):
+		self.px += commande.px
+		self.py += commande.py
+		self.vx += commande.vx
+		self.vy += commande.vy
+		self.a += commande.a
 	def getAngleDeg(self):
 		return (self.a * 180 / pi) - 90
-	def addShooty(self, nouveaux, nouveauy):
-		nouveau = pom(self.px, self.py, self.vx + nouveaux, self.vy + nouveauy, 0, self.a) 
+	def addShooty(self, veloc):
+		velocx = veloc * cos(self.a)
+		velocy = veloc * sin(self.a)
+		nouveau = pom(self.px, self.py, self.vx + velocx, self.vy + velocy, 0, self.a)
 		return nouveau
 	def angleVeloc(self):
 		if self.vx == 0:
@@ -61,6 +76,7 @@ class pom:
 			self.a = angle + pi
 		else:
 			self.a = angle
+		# print self.a
 		return
 	def distance(self, autre):
 		deltax = -1 * (autre.px - self.px)
