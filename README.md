@@ -37,3 +37,6 @@ Le point central du programme est (alors que le monde est toujours simple et ne 
 	return (un vaisseau valide)
 
 - Fonction command, qui va prendre un objet point-of-mass et modifier self.pom en consequence. Si l'utilisateur veut accelerer de x vers l'avant et tourner de y vers la gauche, lui passer un pom avec vy = x, a = y, et la fonction command va additionner le pom a self.pom. (aucune implementation valide encore) (va probablement changer vu que les donnees de pom ne sont pas les seules commandes que je vais envoyer a un vaisseau)
+
+
+UPDATE: Je vais separer les vaisseaux et les armes. 
