@@ -14,7 +14,7 @@ class triangle(pom):
 		glRotate(position.getAngleDeg(), 0, 0, 1)
 		r = self.rayon
 		glBegin(GL_LINE_LOOP)
-		glVertex2f(0, 0 + r)
+		glVertex2f(0, 0 + 2 * r)
 		glVertex2f(0 - r, 0 - r)
 		glVertex2f(0 + r, 0 - r)
 		glEnd() 
