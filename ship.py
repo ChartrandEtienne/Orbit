@@ -2,12 +2,16 @@ from math import *
 from cercle import cercle
 from pom import pom
 from missile import missile
+from caption import printCaption 
+
+# pas sur que je veut faire ca.
 class ship:
-	def __init__(self, parPom, parGra):
+	def __init__(self, parPom, parGra, parCaption = ""):
 		self.pom = parPom
 		self.gra = parGra
 		self.age = 0
 		self.rayon = 4
+		self.caption = parCaption
 	def commande(self, nouveauPom):
 		self.pom.addCommande(nouveauPom)
 	def collision(self, other):
@@ -25,6 +29,7 @@ class ship:
 		return 0
 	def render(self):
 		self.gra.render(self.pom)
+		printCaption(self.pom.px, self.pom.py, self.caption)
 	def shoot(self, veloc):
 		nouveau = missile(self.pom.addShooty(veloc))
 		return nouveau

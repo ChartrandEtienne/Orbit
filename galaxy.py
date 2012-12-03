@@ -10,6 +10,7 @@ class galaxy:
 		self.planetes = []	
 		self.tick = 0.032
 	def Tick(self):
+		self.vaisseaux[0].pom.prevision(self.planetes[0].pom, self.tick, 10)
 		for i in xrange(len(self.vaisseaux) - 1, -1, -1):
 			if self.vaisseaux[i].sim(self.planetes[0].pom, self.tick):
 				del self.vaisseaux[i]
@@ -54,4 +55,9 @@ class galaxy:
 			i.render()
 		for i in self.armes:
 			i.render()
+#		glLoadIdentity()
+#		glScale(0.015, 0.015, 1)
+#		banane = "banane"
+#		for i in banane:
+#			glutStrokeCharacter(GLUT_STROKE_ROMAN, ord(i)) 
 		glFlush()

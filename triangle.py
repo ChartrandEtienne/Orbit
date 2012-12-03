@@ -18,3 +18,9 @@ class triangle(pom):
 		glVertex2f(0 - r, 0 - r)
 		glVertex2f(0 + r, 0 - r)
 		glEnd() 
+		if position.previsions:
+			glBegin(GL_LINE)
+			for i in position.previsions:
+				glVertex2f(i.px, i.py)
+			glEnd()
+			

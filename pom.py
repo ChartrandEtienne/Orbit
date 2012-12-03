@@ -10,6 +10,8 @@ from OpenGL.GLU import *
 from numpy import *
 from math import *
 
+from copy import *
+
 # a: acceleration (m/s**2)
 # M: masse de la planete (kg)
 # r: rayon depuis le centre de la planete (m)
@@ -34,6 +36,7 @@ G = 6.6726 * 10 ** 1
 # 
 # sim: prends un autre point de masse et calcule la position de self apres le temps tick selon l'attraction de pom. Possiblement d'un tableau de pom si j'en ai le courage
 class pom:
+	previsions = []
 	def __init__(self, parPx, parPy, parVx, parVy, parMasse = 1, parAngle = 0):
 		self.px = parPx
 		self.py = parPy
@@ -41,6 +44,14 @@ class pom:
 		self.vy = parVy
 		self.m = parMasse
 		self.a = parAngle
+	def __copy__(objet):
+		return pom(objet.px, objet.py, objet.vx, objet.vy, objet.m, objet.a)
+		# XXX BUG LOOKOUT
+	def prevision(self, gravite, tick, iterations):
+		self.previsions = [copy(self)]
+		for i in range(0, iterations):
+			self.previsions.append(copy(self.previsions[-1]))
+			self.previsions[-1].sim(gravite, tick)	
 	def addCommande(self, commande):
 		self.px += commande.px
 		self.py += commande.py

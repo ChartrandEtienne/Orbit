@@ -39,7 +39,7 @@ centre = ship(pom(0, 0, 0, 0, 10 ** 2), cercle(10,20))
 galaxie.planetes.append(centre)
 
 # orbite rond
-Test = ship(pom(-30, 0, 0, 14.8), triangle())
+Test = ship(pom(-30, 0, 0, 14.8), triangle(), "hiro p.")
 Test2 = ship(pom(-20, 0, 0, 18.166), triangle())
 
 galaxie.vaisseaux.append(Test)
