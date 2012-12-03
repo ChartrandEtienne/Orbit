@@ -7,7 +7,7 @@ class ship:
 		self.pom = parPom
 		self.gra = parGra
 		self.age = 0
-		self.rayon = 0.5
+		self.rayon = 4
 	def commande(self, nouveauPom):
 		self.pom.addCommande(nouveauPom)
 	def collision(self, other):
@@ -15,7 +15,7 @@ class ship:
 			# nombre arbitraire: un missile devient actif des qu'il a 4 secondes
 			# sinon, on a une collision avec le tireur
 			# ce qui est emmerdant pour plusieurs raisons
-			if other.age > 4:
+			if other.age > 1:
 				return True
 		else:
 			return False	

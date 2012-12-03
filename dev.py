@@ -8,6 +8,7 @@ from OpenGL.GLU import *
 
 from numpy import *
 
+from galaxy import galaxy
 from pom import pom
 from triangle import triangle
 from cercle import cercle
@@ -22,57 +23,27 @@ class matrice:
 
 
 def tick(foo):
-	# for i in range(0, len(systemeSolaire)):
-	#	systemeSolaire[i].pom.sim(centre.pom, 0.032)	
-	for i in xrange(len(systemeSolaire) -1, -1, -1):
-		if (systemeSolaire[i].sim(centre.pom, 0.032)):
-			del systemeSolaire[i]
-	# boucle dans le tableau, trouve toutes les collisions. 
-	# le tableau est de forme [(a, b), (c, d)] ou chaque paire est une paire d'objets actuellement en collision.
-	i = j = 0 
-	k = len(systemeSolaire)
-	collisions = []
-	while j < k:
-		for i in range(j + 1, k):
-			if systemeSolaire[j].collision(systemeSolaire[i]):
-				collisions.append(i)
-				collisions.append(j)
-		j += 1
-	collisions.sort()
-	# print collisions
-	for i in xrange(len(collisions) - 1, -1, -1):
-		del systemeSolaire[collisions[i]]
-	glutPostRedisplay()
-	glutTimerFunc(50, tick, 0)
+	galaxie.Tick()
+ 	glutPostRedisplay()
+ 	glutTimerFunc(50, tick, 0)
 
 
-def display():
-	glMatrixMode(GL_MODELVIEW)
-	glEnableClientState(GL_VERTEX_ARRAY)
-	glClear(GL_COLOR_BUFFER_BIT)
-	glColor3f(1, 0, 0)
-	glLoadIdentity()
-	centre.render()
-	for i in range(0, len(systemeSolaire)):
-		systemeSolaire[i].render()
-	# Test.render()
-	# centre.render()
-	glFlush()	
 
 def init():
 	glClearColor(0, 0, 0, 0)
 	glLoadIdentity()
+
+galaxie = galaxy()
 	
-# centre = cercle(vector(0, 0), vector(0, 0), 10 ** 2)
-# centre = ship(pom(vector(0, 0), vector(0, 0), 10 ** 2), cercle(10, 20))
 centre = ship(pom(0, 0, 0, 0, 10 ** 2), cercle(10,20))
-# Test = ship(pom(vector(-20, 0), vector(0, 20)), cercle())
+galaxie.planetes.append(centre)
 
 # orbite rond
 Test = ship(pom(-30, 0, 0, 14.8), triangle())
-
 Test2 = ship(pom(-20, 0, 0, 18.166), triangle())
 
+galaxie.vaisseaux.append(Test)
+galaxie.vaisseaux.append(Test2)
 # escape velocity
 # Test = ship(pom(-10, 0, 0, 36.33), triangle())
 
@@ -81,11 +52,11 @@ Test2 = ship(pom(-20, 0, 0, 18.166), triangle())
 
 # centre.rayon = 10
 # centre.smoothness = 20
-systemeSolaire = []
+# systemeSolaire = []
 # Test = cercle(vector(-20, 0), vector(0, 20))
 #print len(systemeSolaire)
-systemeSolaire.append(Test)
-systemeSolaire.append(Test2)
+# systemeSolaire.append(Test)
+# systemeSolaire.append(Test2)
 # systemeSolaire.append(cercle(vector(10, 0), vector(0, 25)))
 #print len(systemeSolaire)
 # weird shit
@@ -93,18 +64,18 @@ systemeSolaire.append(Test2)
 #print len(systemeSolaire)
 
 def keyboard(key, x, y):
-
+	# cette salete...
+	# Je vais devoir inventer un format d'interface entre l'objet clavier
+	# et l'objet galaxie. 
 	if key == 'q':
 		sys.exit(0)
 	if key == 'p':
 		# mhhhh... Le append ne devrait pas reellement etre la.
-		systemeSolaire.append(systemeSolaire[0].shoot(10))
+		galaxie.armes.append(galaxie.vaisseaux[0].shoot(10))
 	if key == 'd':
-		systemeSolaire[0].commande(pom(0, 0, 0, 0, 0, 0.1))
+		galaxie.vaisseaux[0].commande(pom(0, 0, 0, 0, 0, 0.1))
 	if key == 'a':
-		systemeSolaire[0].commande(pom(0, 0, 0, 0, 0, -0.1))
-	if key == 'i':
-		print systemeSolaire[2].pom.a
+		galaxie.vaisseaux[0].commande(pom(0, 0, 0, 0, 0, -0.1))
 		
 
 
@@ -119,7 +90,7 @@ def main():
 	matrice1 = matrice()
 	matrice1.projection(50, 50)
 	glLoadMatrixf(matrice1.m)
-	glutDisplayFunc(display)
+	glutDisplayFunc(galaxie.display)
 	glutKeyboardFunc(keyboard)
 	glutTimerFunc(25, tick, 0)
 	glutMainLoop()
