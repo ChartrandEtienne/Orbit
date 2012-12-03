@@ -46,12 +46,13 @@ class pom:
 		self.a = parAngle
 	def __copy__(objet):
 		return pom(objet.px, objet.py, objet.vx, objet.vy, objet.m, objet.a)
-		# XXX BUG LOOKOUT
 	def prevision(self, gravite, tick, iterations):
-		self.previsions = [copy(self)]
-		for i in range(0, iterations):
-			self.previsions.append(copy(self.previsions[-1]))
-			self.previsions[-1].sim(gravite, tick)	
+		if not self.previsions:
+			self.previsions = [copy(self)]
+		for i in range(len(self.previsions), iterations):
+			prevision = copy(self.previsions[-1])
+			prevision.sim(gravite, tick)
+			self.previsions.append(prevision)
 	def addCommande(self, commande):
 		self.px += commande.px
 		self.py += commande.py
@@ -94,6 +95,13 @@ class pom:
 		deltay = -1 * (autre.py - self.py)
 		return sqrt(abs(deltax ** 2) + (deltay ** 2))
 	def sim(self, gravite, tick):
+		if self.previsions:
+			elem = self.previsions.pop(0)
+			self.px = elem.px
+			self.py = elem.py
+			self.vx = elem.vx
+			self.vy = elem.vy
+			return
 		global G
 		deltax = -1 * (gravite.px - self.px)
 		deltay = -1 * (gravite.py - self.py)

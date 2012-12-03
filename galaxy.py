@@ -10,7 +10,7 @@ class galaxy:
 		self.planetes = []	
 		self.tick = 0.032
 	def Tick(self):
-		self.vaisseaux[0].pom.prevision(self.planetes[0].pom, self.tick, 10)
+		self.vaisseaux[0].planTir(self.planetes[0].pom, self.tick, 40)
 		for i in xrange(len(self.vaisseaux) - 1, -1, -1):
 			if self.vaisseaux[i].sim(self.planetes[0].pom, self.tick):
 				del self.vaisseaux[i]

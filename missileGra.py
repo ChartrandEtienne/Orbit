@@ -20,4 +20,9 @@ class missileGra:
 		glVertex2f(self.grandeur / 3.0, self.grandeur / -2.0)
 		glVertex2f(0, 0)
 		glEnd()
-				
+		glLoadIdentity()
+		if position.previsions:
+			glBegin(GL_LINE_STRIP)	
+			for i in position.previsions:
+				glVertex2f(i.px, i.py)
+			glEnd()
