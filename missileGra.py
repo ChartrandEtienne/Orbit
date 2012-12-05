@@ -21,8 +21,8 @@ class missileGra:
 		glVertex2f(0, 0)
 		glEnd()
 		glLoadIdentity()
-		if position.previsions:
-			glBegin(GL_LINE_STRIP)	
-			for i in position.previsions:
-				glVertex2f(i.px, i.py)
-			glEnd()
+#		if position.previsions:
+#			glBegin(GL_LINE_STRIP)	
+#			for i in position.previsions:
+#				glVertex2f(i.px, i.py)
+#			glEnd()

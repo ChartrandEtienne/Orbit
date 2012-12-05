@@ -1,6 +1,7 @@
 from pom import pom
 import OpenGL
 from OpenGL.GL import *
+from previsionGra import previsionGra
 
 
 class triangle(pom):
@@ -19,8 +20,9 @@ class triangle(pom):
 		glVertex2f(0 + r, 0 - r)
 		glEnd() 
 		glLoadIdentity()
-		if position.previsions:
-			glBegin(GL_LINE_STRIP)
-			for i in position.previsions:
-				glVertex2f(i.px, i.py)
-			glEnd()
+#		if position.previsions:
+#			previsionGra(position.previsions)
+#			glBegin(GL_LINE_STRIP)
+#			for i in position.previsions:
+#				glVertex2f(i.px, i.py)
+#			glEnd()

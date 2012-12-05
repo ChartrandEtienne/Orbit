@@ -36,8 +36,8 @@ G = 6.6726 * 10 ** 1
 # 
 # sim: prends un autre point de masse et calcule la position de self apres le temps tick selon l'attraction de pom. Possiblement d'un tableau de pom si j'en ai le courage
 class pom:
-	previsions = []
 	def __init__(self, parPx, parPy, parVx, parVy, parMasse = 1, parAngle = 0):
+		self.previsions = []
 		self.px = parPx
 		self.py = parPy
 		self.vx = parVx

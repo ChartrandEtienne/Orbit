@@ -9,8 +9,22 @@ class galaxy:
 		self.armes = []
 		self.planetes = []	
 		self.tick = 0.032
+		self.viseur = None
+		self.vise = None
 	def Tick(self):
-		self.vaisseaux[0].planTir(self.planetes[0].pom, self.tick, 40)
+		# self.vaisseaux[0].planTir(self.planetes[0].pom, self.tick, 40)
+		# self.vaisseaux[1].planSim(self.planetes[0].pom, self.tick, 40)
+		self.viseur = self.vaisseaux[0]
+		self.vise = self.vaisseaux[1]
+		# Mhkay
+		self.viseur.planTir(self.planetes[0].pom, self.tick, 160)
+		self.vise.planSim(self.planetes[0].pom, self.tick, 160)
+		
+		positionCollision = self.viseur.collisionFuture(self.vise)
+
+		print positionCollision
+		# if self.viseur.collisionFuture(self.
+		# et c'est tout.
 		for i in xrange(len(self.vaisseaux) - 1, -1, -1):
 			if self.vaisseaux[i].sim(self.planetes[0].pom, self.tick):
 				del self.vaisseaux[i]
@@ -41,6 +55,7 @@ class galaxy:
 			self.vaisseaux.remove(i)
 		# vaisseau + missle = ambigu. Disons destruction, pour le moment.
 		for i in cvm:
+			# bug ici: pour deux collisions detectees, tente d'enlever le vaisseau 2 fois
 			self.vaisseaux.remove(i[0])
 			self.armes.remove(i[1])
 	def display(self):
